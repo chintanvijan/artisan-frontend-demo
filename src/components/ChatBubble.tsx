@@ -9,10 +9,11 @@ interface ChatBubbleProps {
 }
 
 const ChatBubble: React.FC<ChatBubbleProps> = ({ message, sender, onDelete, onUpdate }) => {
-  return (
+ 
+    return (
    
     <div className={`chat-bubble ${sender}`} title="Tap to Edit" onClick={onUpdate} >  
-      <p>{message}  {sender === "user" && <span className="delete-icon" title="Delete Message" onClick={onDelete} ><b>X</b></span>}</p>
+      <p>  {message}  {sender === "user" && <span className="delete-icon" title="Delete Message" onClick={onDelete} ><b>X</b></span>}</p>
      
     </div>
   

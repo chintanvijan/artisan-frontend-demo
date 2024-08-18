@@ -34,7 +34,8 @@ const Chat: React.FC = () => {
     
   }
 
-  const handleDeleteMessage = (index: number) => {
+  const handleDeleteMessage = (index: number, e: React.SyntheticEvent) => {
+    e.stopPropagation();
     let updatedMessages = [...messages];
     updatedMessages.splice(index,1)
     setMessages(updatedMessages)
@@ -56,7 +57,9 @@ const Chat: React.FC = () => {
     <>
     <div className="chat" ref={chatRef}>
       {messages?.map((msg, index) => (
-        <ChatBubble key={index} message={msg.message} sender={msg.sender} onDelete={() => handleDeleteMessage(index)} onUpdate={() => handleUpdateMessage(index)} />
+        <>
+        <ChatBubble key={index} message={msg.message} sender={msg.sender} onDelete={(e) => handleDeleteMessage(index,e)} onUpdate={() => handleUpdateMessage(index)} />  
+        </>
       ))}
      
      
