@@ -12,7 +12,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({ message, sender, onDelete, onUp
  
     return (
    
-    <div className={`chat-bubble ${sender}`} title="Tap to Edit" onClick={onUpdate} >  
+    <div className={`chat-bubble ${sender}`} title="Tap to Edit" onClick={ sender === "user" ? onUpdate : () => {}} >  
       <p>  {message}  {sender === "user" && <span className="delete-icon" title="Delete Message" onClick={onDelete} ><b>X</b></span>}</p>
      
     </div>
